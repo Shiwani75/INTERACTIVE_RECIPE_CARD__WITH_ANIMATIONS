@@ -1,0 +1,482 @@
+/* --- Root Variables for Colors (Easier to change theme) --- */
+:root {
+    --primary-color: #A0522D; /* Sienna - A warm brown */
+    --secondary-color: #D2B48C; /* Tan - Lighter brown */
+    --accent-color: #B8860B; /* DarkGoldenrod - Rich gold */
+    --text-dark: #36454F; /* Charcoal */
+    --text-light: #5A5A5A; /* Darker gray */
+    --bg-light: #FDF5E6; /* Old Lace - Creamy off-white */
+    --bg-card: #FFFFFF; /* Pure white for card */
+    --border-color: #E0E0E0; /* Light gray border */
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+}
+
+/* --- General Body and Font Styling --- */
+body {
+    font-family: 'Lora', serif; /* Body text font */
+    margin: 0;
+    padding: 30px; /* Increased padding */
+    background-color: var(--bg-light);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    color: var(--text-dark);
+    line-height: 1.6; /* Improved readability */
+}
+
+/* --- Recipe Card Container --- */
+.recipe-card {
+    background-color: var(--bg-card);
+    border-radius: 15px; /* Softer rounded corners */
+    box-shadow: 0 12px 25px var(--shadow-medium); /* More prominent shadow */
+    width: 100%;
+    max-width: 750px; /* Slightly wider card */
+    overflow: hidden;
+    margin-bottom: 50px;
+    border: 1px solid var(--border-color); /* Subtle border */
+}
+
+/* --- Header Section --- */
+.recipe-header {
+    text-align: center;
+    padding: 35px; /* Increased padding */
+    background: linear-gradient(to bottom, var(--secondary-color), var(--bg-light)); /* Soft gradient */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.recipe-header h1 {
+    font-family: 'Playfair Display', serif; /* Title font */
+    margin-top: 0;
+    color: var(--primary-color); /* Primary brand color */
+    font-size: 3em; /* Larger title */
+    text-shadow: 2px 2px 4px var(--shadow-light); /* Softer text shadow */
+    letter-spacing: 1px; /* Slight letter spacing */
+}
+
+/* NEW: Style for the combined meta text in header */
+.recipe-meta-text {
+    font-size: 1.1em;
+    color: var(--text-light);
+    margin-top: 10px;
+    margin-bottom: 20px; /* Space between text and image */
+}
+
+.recipe-image {
+    width: 100%;
+    max-height: 350px; /* Taller image */
+    object-fit: cover;
+    border-radius: 10px; /* Rounded image corners */
+    /* margin-top: 25px; REMOVED as it's now handled by .recipe-meta-text margin-bottom */
+    box-shadow: 0 6px 12px var(--shadow-light); /* Subtle image shadow */
+    border: 3px solid var(--bg-card); /* White border around image */
+    outline: 1px solid var(--border-color); /* Thin outline */
+}
+
+/* --- Common Section Styling --- */
+section {
+    padding: 30px 40px; /* More padding left/right */
+    border-bottom: 1px solid var(--border-color);
+}
+
+section:last-of-type {
+    border-bottom: none;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    font-size: 2.2em; /* Larger section titles */
+    margin-bottom: 20px;
+    position: relative; /* For the decorative line */
+    padding-bottom: 5px;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px; /* Short underline */
+    height: 3px;
+    background-color: var(--accent-color); /* Gold accent line */
+    margin-top: 8px;
+    border-radius: 2px;
+}
+
+
+/* --- Button Styling --- */
+.btn {
+    padding: 12px 25px; /* Larger buttons */
+    border: none;
+    border-radius: 8px; /* Softer button corners */
+    cursor: pointer;
+    font-size: 1.05em; /* Slightly larger font */
+    font-weight: 700; /* Bolder text */
+    transition: all 0.3s ease; /* Smooth transitions for everything */
+    margin-top: 15px; /* More spacing */
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.btn:hover {
+    transform: translateY(-3px); /* More pronounced lift on hover */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn:disabled {
+    background-color: #CCCCCC;
+    color: #888888;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Specific Button Styles */
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: #8B4513; /* Darker Sienna */
+}
+
+.secondary-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+    border: 1px solid var(--accent-color); /* Gold border */
+}
+
+.secondary-btn:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.navigation-btn {
+    background-color: #E0E0E0; /* Light gray */
+    color: var(--text-dark);
+}
+
+.navigation-btn:hover {
+    background-color: #C0C0C0; /* Darker gray */
+}
+
+
+/* --- Utility Class for Hiding/Showing Elements --- */
+.hidden {
+    display: none; /* Keep display none for instant hide for print media */
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.6s ease-out, max-height 0.6s ease-out; /* Slower, smoother transition */
+}
+
+.visible {
+    display: block; /* Use block for lists */
+    opacity: 1;
+    max-height: 1500px; /* Increased max-height for potential longer lists */
+    transition: opacity 0.6s ease-in, max-height 0.6s ease-in;
+}
+
+/* --- Ingredients and Instructions Lists --- */
+.recipe-ingredients ul,
+.recipe-instructions ol {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 25px;
+}
+
+.ingredient-item,
+.instruction-item {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    margin-bottom: 10px; /* More space between items */
+    padding: 15px 20px; /* More padding */
+    border-radius: 10px; /* Softer corners */
+    transition: all 0.3s ease;
+    display: flex; /* Use flexbox for alignment/icon if needed */
+    align-items: center;
+    line-height: 1.5;
+}
+
+/* Hover effects for list items */
+.ingredient-item:hover,
+.instruction-item:hover {
+    background-color: var(--bg-light); /* Creamy background on hover */
+    transform: translateX(8px); /* More prominent slide */
+    box-shadow: 0 4px 10px var(--shadow-light);
+}
+
+/* Active Instruction Styling */
+.instruction-item.active-instruction {
+    background-color: #FFF8DC; /* Cornsilk - very light yellow for active step */
+    border-left: 6px solid var(--accent-color); /* Gold accent border */
+    font-weight: 700; /* Bolder text */
+    box-shadow: 0 4px 12px var(--shadow-medium);
+    transform: scale(1.02); /* Slightly scale up */
+}
+
+/* --- Timer Specific Styling --- */
+.timer-container {
+    text-align: center;
+    margin-top: 30px; /* Space from ingredients list */
+    padding: 25px;
+    background-color: var(--bg-light);
+    border-radius: 12px;
+    border: 2px dashed var(--accent-color); /* Dashed gold border */
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); /* Inner shadow */
+}
+
+.timer-label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-light);
+}
+
+#timer {
+    font-family: 'Playfair Display', serif; /* Use title font for timer */
+    font-size: 3em; /* Larger timer font */
+    font-weight: 700;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+/* --- Navigation Buttons for Instructions --- */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Align items vertically */
+    margin-top: 30px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+/* NEW: Styling for Completion Message */
+#completion-message {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    color: var(--primary-color);
+    text-align: center;
+    width: 100%; /* Take full width */
+    margin-top: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    transition: opacity 0.5s ease-in; /* Smooth fade in */
+}
+
+
+/* --- Print Button Section --- */
+.print-section {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* --- Responsive Design using Media Queries --- */
+
+/* Tablets and smaller desktops */
+@media (max-width: 900px) {
+    body {
+        padding: 20px;
+    }
+
+    .recipe-card {
+        margin-bottom: 40px;
+        border-radius: 12px;
+        box-shadow: 0 10px 20px var(--shadow-light);
+    }
+
+    .recipe-header {
+        padding: 25px;
+    }
+
+    .recipe-header h1 {
+        font-size: 2.5em;
+    }
+
+    .recipe-image {
+        max-height: 300px;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+
+    section {
+        padding: 25px 30px;
+    }
+
+    .section-title {
+        font-size: 1.8em;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    #timer {
+        font-size: 2.5em;
+    }
+
+    #completion-message {
+        font-size: 1.5em;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+        align-items: flex-start;
+    }
+
+    .recipe-card {
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        margin-bottom: 25px;
+    }
+
+    .recipe-header {
+        padding: 20px;
+    }
+
+    .recipe-header h1 {
+        font-size: 2em;
+    }
+
+    .recipe-image {
+        max-height: 250px;
+    }
+
+    section {
+        padding: 20px 25px;
+    }
+
+    .section-title {
+        font-size: 1.6em;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 12px;
+        font-size: 0.95em;
+    }
+
+    .navigation-buttons {
+        flex-direction: column;
+    }
+    .navigation-buttons .btn {
+        margin-bottom: 10px; /* Space between prev/next buttons when stacked */
+    }
+
+    .ingredient-item,
+    .instruction-item {
+        padding: 12px 15px;
+        font-size: 0.95em;
+    }
+
+    #timer {
+        font-size: 2em;
+    }
+
+    .timer-container .primary-btn {
+        margin-bottom: 0; /* Remove extra margin for the timer button */
+    }
+
+    #completion-message {
+        font-size: 1.3em;
+    }
+}
+
+/* --- Print Styles --- */
+@media print {
+    body {
+        background-color: white;
+        padding: 0;
+        margin: 0;
+        font-size: 12pt;
+        color: black;
+        -webkit-print-color-adjust: exact; /* For better color printing in some browsers */
+        print-color-adjust: exact;
+    }
+
+    .recipe-card {
+        box-shadow: none;
+        border: none;
+        width: auto;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .recipe-header,
+    .recipe-meta, /* Keep this if you have other meta info that might come back */
+    .recipe-ingredients,
+    .recipe-instructions,
+    .print-section {
+        border: none;
+        padding: 10mm 15mm;
+    }
+
+    .recipe-image {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+    }
+
+    .btn,
+    .timer-container,
+    .navigation-buttons, /* Hide navigation buttons for print */
+    #completion-message /* Hide completion message for print */
+    {
+        display: none;
+    }
+
+    .hidden {
+        display: block !important;
+        opacity: 1 !important;
+        max-height: none !important;
+    }
+
+    .ingredient-item,
+    .instruction-item {
+        background-color: white;
+        border: 1px solid #eee;
+        padding: 8px 10px;
+        transform: none;
+        box-shadow: none;
+        margin-bottom: 5px;
+    }
+
+    .instruction-item.active-instruction {
+        background-color: white;
+        border-left: none;
+        font-weight: normal;
+        box-shadow: none;
+    }
+
+    .recipe-instructions ol {
+        list-style-type: decimal;
+        padding-left: 20px;
+    }
+
+    /* Page breaks for better print layout */
+    .recipe-meta,
+    .recipe-ingredients,
+    .recipe-instructions {
+        page-break-inside: avoid;
+        margin-top: 15px;
+    }
+
+    h1, h2 {
+        page-break-after: avoid;
+    }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Recipe Card</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="recipe-card">
+        <header class="recipe-header">
+            <h1 id="recipe-title">Delicious Chocolate Cake</h1>
+            <p class="recipe-meta-text"><strong>Preparation Time:</strong> <span id="prep-time-display">60 minutes</span> | <strong>Serving Size:</strong> 8 servings</p>
+            <img src="chocolate-cake.jpg" alt="A delicious chocolate cake" class="recipe-image">
+        </header>
+
+        <section class="recipe-ingredients">
+            <h2 class="section-title">Ingredients</h2>
+            <button id="toggle-ingredients-btn" class="btn secondary-btn">Show Ingredients</button>
+            <ul id="ingredients-list" class="hidden">
+                <li class="ingredient-item">2 cups all-purpose flour</li>
+                <li class="ingredient-item">1 ¾ cups granulated sugar</li>
+                <li class="ingredient-item">¾ cup unsweetened cocoa powder</li>
+                <li class="ingredient-item">2 teaspoons baking soda</li>
+                <li class="ingredient-item">1 teaspoon salt</li>
+                <li class="ingredient-item">1 cup buttermilk</li>
+                <li class="ingredient-item">½ cup vegetable oil</li>
+                <li class="ingredient-item">2 large eggs</li>
+                <li class="ingredient-item">1 teaspoon vanilla extract</li>
+                <li class="ingredient-item">1 cup boiling water</li>
+            </ul>
+            <div class="timer-container">
+                <p class="timer-label">Time remaining:</p>
+                <span id="timer">00:00</span>
+                <button id="start-timer-btn" class="btn primary-btn">Start Cooking</button>
+            </div>
+        </section>
+
+        <section class="recipe-instructions">
+            <h2 class="section-title">Instructions</h2>
+            <button id="toggle-instructions-btn" class="btn secondary-btn">Show Instructions</button>
+            <ol id="instructions-list" class="hidden">
+                <li class="instruction-item active-instruction" data-step="1">Preheat oven to 350°F (175°C). Grease and flour two 9-inch round cake pans.</li>
+                <li class="instruction-item" data-step="2">In a large bowl, whisk together the flour, sugar, cocoa, baking soda, and salt.</li>
+                <li class="instruction-item" data-step="3">Add the buttermilk, oil, eggs, and vanilla extract to the dry ingredients. Beat on medium speed for 2 minutes.</li>
+                <li class="instruction-item" data-step="4">Stir in the boiling water (the batter will be thin).</li>
+                <li class="instruction-item" data-step="5">Pour batter evenly into the prepared pans.</li>
+                <li class="instruction-item" data-step="6">Bake for 30-35 minutes, or until a wooden skewer inserted into the center comes out clean.</li>
+                <li class="instruction-item" data-step="7">Cool in the pans for 10 minutes before inverting onto a wire rack to cool completely.</li>
+            </ol>
+            <div class="navigation-buttons">
+                <button id="prev-step-btn" class="btn navigation-btn" disabled>Previous Step</button>
+                <button id="next-step-btn" class="btn navigation-btn">Next Step</button>
+                <p id="completion-message" class="hidden">Recipe Completed! Enjoy your delicious cake!</p>
+            </div>
+        </section>
+
+        <div class="print-section">
+            <button id="print-recipe-btn" class="btn primary-btn">Print Recipe</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
